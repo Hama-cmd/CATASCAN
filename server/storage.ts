@@ -1,38 +1,34 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import { screenings, type InsertScreening, type Screening } from "@shared/schema";
+import { eq, desc } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  createScreening(screening: InsertScreening): Promise<Screening>;
+  getScreeningsByUser(userId: string): Promise<Screening[]>;
+  getScreening(id: number): Promise<Screening | undefined>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async createScreening(screening: InsertScreening): Promise<Screening> {
+    const [result] = await db.insert(screenings).values(screening).returning();
+    return result;
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getScreeningsByUser(userId: string): Promise<Screening[]> {
+    return db
+      .select()
+      .from(screenings)
+      .where(eq(screenings.userId, userId))
+      .orderBy(desc(screenings.createdAt));
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async getScreening(id: number): Promise<Screening | undefined> {
+    const [result] = await db
+      .select()
+      .from(screenings)
+      .where(eq(screenings.id, id));
+    return result;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
