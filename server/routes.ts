@@ -49,7 +49,7 @@ export async function registerRoutes(
               {
                 type: "image_url",
                 image_url: {
-                  url: `data:image/jpeg;base64,${input.image}`,
+                  url: input.image.startsWith('data:') ? input.image : `data:image/jpeg;base64,${input.image}`,
                 },
               },
             ],
@@ -63,7 +63,7 @@ export async function registerRoutes(
       // Save to database
       const screening = await storage.createScreening({
         userId,
-        imageUrl: `data:image/jpeg;base64,${input.image}`, // In a real app, upload to S3/Blob storage
+        imageUrl: input.image.startsWith('data:') ? input.image : `data:image/jpeg;base64,${input.image}`, // In a real app, upload to S3/Blob storage
         analysis: analysisResult,
       });
 
