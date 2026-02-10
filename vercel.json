@@ -1,0 +1,49 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/index.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "api/predict.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxDuration": 30
+            }
+        },
+        {
+            "src": "package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "dist/public"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/predict",
+            "dest": "api/predict.py"
+        },
+        {
+            "src": "/api/(.*)",
+            "dest": "api/index.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1",
+            "check": true
+        },
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/.*",
+            "dest": "/index.html"
+        }
+    ],
+    "env": {
+        "NODE_ENV": "production",
+        "PYTHON_MODEL_URL": "http://localhost:3000/api"
+    }
+}
