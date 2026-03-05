@@ -3,23 +3,28 @@ import io
 import base64
 import numpy as np
 from PIL import Image
-import tensorflow as tf
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+
+try:
+    import tflite_runtime.interpreter as tflite
+except ImportError:
+    import tensorflow.lite as tflite
 
 app = Flask(__name__)
 CORS(app)
 
 # Load model (path relative to root in Vercel)
-MODEL_PATH = os.path.join(os.getcwd(), 'best_model_mobilenetv2_katarak.h5')
-model = None
+MODEL_PATH = os.path.join(os.getcwd(), 'model.tflite')
+interpreter = None
 
-def get_model():
-    global model
-    if model is None:
+def get_interpreter():
+    global interpreter
+    if interpreter is None:
         print(f"Loading model from {MODEL_PATH}...")
-        model = tf.keras.models.load_all(MODEL_PATH)
-    return model
+        interpreter = tflite.Interpreter(model_path=MODEL_PATH)
+        interpreter.allocate_tensors()
+    return interpreter
 
 def preprocess_image(image_bytes):
     img = Image.open(io.BytesIO(image_bytes)).convert('RGB')
@@ -76,8 +81,13 @@ def predict():
         processed_image = preprocess_image(image_bytes)
         
         # Inference
-        model = get_model()
-        prediction = model.predict(processed_image)
+        interp = get_interpreter()
+        input_details = interp.get_input_details()
+        output_details = interp.get_output_details()
+        
+        interp.set_tensor(input_details[0]['index'], processed_image)
+        interp.invoke()
+        prediction = interp.get_tensor(output_details[0]['index'])
         
         result = build_result(prediction)
         return jsonify(result)

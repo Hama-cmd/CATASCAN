@@ -3,7 +3,6 @@ dist
 .git
 .local
 *.h5
-!best_model_mobilenetv2_katarak.h5
 convert_to_tflite.py
 model_server.py
 ps-script.ps1
