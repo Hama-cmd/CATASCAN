@@ -146,8 +146,8 @@ const ColorGame = ({ onBack }: { onBack: () => void }) => {
   };
 
   return (
-    <Card className="border-none shadow-xl bg-white overflow-hidden relative">
-      <CardHeader className="bg-blue-50/50 border-b border-blue-100">
+    <Card className="border-none shadow-xl bg-white dark:bg-card overflow-hidden relative">
+      <CardHeader className="bg-blue-50/50 dark:bg-blue-900/10 border-b border-blue-100 dark:border-blue-900/20">
         <div className="flex justify-between items-center">
           <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-400 hover:text-gray-600">
             <ArrowLeft className="w-4 h-4 mr-1" /> Menu
@@ -168,12 +168,12 @@ const ColorGame = ({ onBack }: { onBack: () => void }) => {
       <CardContent className="p-8 flex flex-col items-center justify-center min-h-[420px]">
         {gameState === 'start' && (
           <div className="text-center space-y-6 animate-in fade-in zoom-in duration-300">
-            <div className="bg-blue-100 p-6 rounded-full w-fit mx-auto ring-8 ring-blue-50">
-              <Eye className="w-12 h-12 text-blue-600" />
+            <div className="bg-blue-100 dark:bg-blue-900/30 p-6 rounded-full w-fit mx-auto ring-8 ring-blue-50 dark:ring-blue-900/10">
+              <Eye className="w-12 h-12 text-blue-600 dark:text-blue-400" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900">Uji Mata Fokus</h3>
-              <p className="text-gray-500 max-w-xs mx-auto mt-2">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Uji Mata Fokus</h3>
+              <p className="text-gray-500 dark:text-gray-400 max-w-xs mx-auto mt-2">
                 Temukan satu kotak dengan warna berbeda sebelum waktu habis!
               </p>
             </div>
@@ -185,8 +185,8 @@ const ColorGame = ({ onBack }: { onBack: () => void }) => {
 
         {gameState === 'playing' && (
           <div className="w-full max-w-sm space-y-6">
-            <div className="flex justify-between items-center px-4 bg-gray-50 py-2 rounded-full">
-              <span className="text-sm font-bold text-gray-500 flex items-center gap-1">
+            <div className="flex justify-between items-center px-4 bg-gray-50 dark:bg-muted py-2 rounded-full">
+              <span className="text-sm font-bold text-gray-500 dark:text-gray-400 flex items-center gap-1">
                 <RefreshCcw className="w-3.5 h-3.5" /> Sisa Waktu:
               </span>
               <Badge variant={timeLeft < 5 ? "destructive" : "secondary"} className="text-lg px-4 py-0">
@@ -195,7 +195,7 @@ const ColorGame = ({ onBack }: { onBack: () => void }) => {
             </div>
 
             <div
-              className="grid gap-2 aspect-square w-full bg-gray-100 p-2 rounded-2xl shadow-inner"
+              className="grid gap-2 aspect-square w-full bg-gray-100 dark:bg-muted p-2 rounded-2xl shadow-inner"
               style={{ gridTemplateColumns: `repeat(${gridSize}, 1fr)` }}
             >
               {[...Array(gridSize * gridSize)].map((_, i) => (
@@ -213,10 +213,10 @@ const ColorGame = ({ onBack }: { onBack: () => void }) => {
         {gameState === 'over' && (
           <div className="text-center space-y-6 animate-in fade-in zoom-in duration-300">
             <Badge className="bg-yellow-500 hover:bg-yellow-600 text-white border-none py-1 px-4">Game Over</Badge>
-            <h3 className="text-3xl font-black text-gray-900">Skor Anda:</h3>
-            <div className="text-7xl font-black text-blue-600 py-4 drop-shadow-md">{score}</div>
-            <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
-              <p className="text-gray-600 text-sm">Kemampuan fokus mata Anda sangat baik!</p>
+            <h3 className="text-3xl font-black text-gray-900 dark:text-gray-100">Skor Anda:</h3>
+            <div className="text-7xl font-black text-blue-600 dark:text-blue-400 py-4 drop-shadow-md">{score}</div>
+            <div className="bg-gray-50 dark:bg-muted p-4 rounded-xl border border-gray-100 dark:border-border">
+              <p className="text-gray-600 dark:text-gray-400 text-sm">Kemampuan fokus mata Anda sangat baik!</p>
             </div>
             <div className="pt-4 flex flex-col gap-3">
               <Button onClick={startGame} className="py-7 rounded-2xl bg-blue-600 hover:bg-blue-700 shadow-lg">
@@ -277,8 +277,8 @@ const ReactionGame = ({ onBack }: { onBack: () => void }) => {
   };
 
   return (
-    <Card className="border-none shadow-xl bg-white overflow-hidden relative">
-      <CardHeader className="bg-emerald-50/50 border-b border-emerald-100">
+    <Card className="border-none shadow-xl bg-white dark:bg-card overflow-hidden relative">
+      <CardHeader className="bg-emerald-50/50 dark:bg-emerald-900/10 border-b border-emerald-100 dark:border-emerald-900/20">
         <div className="flex justify-between items-center">
           <Button variant="ghost" size="sm" onClick={onBack} className="text-gray-400 hover:text-gray-600">
             <ArrowLeft className="w-4 h-4 mr-1" /> Menu
@@ -297,17 +297,17 @@ const ReactionGame = ({ onBack }: { onBack: () => void }) => {
       </CardHeader>
 
       <CardContent
-        className="p-0 flex flex-col items-center justify-center min-h-[420px] relative overflow-hidden bg-gray-50/30"
+        className="p-0 flex flex-col items-center justify-center min-h-[420px] relative overflow-hidden bg-gray-50/30 dark:bg-muted/30"
         ref={containerRef}
       >
         {gameState === 'start' && (
           <div className="text-center space-y-6 animate-in fade-in zoom-in duration-300 p-8">
-            <div className="bg-emerald-100 p-6 rounded-full w-fit mx-auto ring-8 ring-emerald-50">
-              <Target className="w-12 h-12 text-emerald-600" />
+            <div className="bg-emerald-100 dark:bg-emerald-900/30 p-6 rounded-full w-fit mx-auto ring-8 ring-emerald-50 dark:ring-emerald-900/10">
+              <Target className="w-12 h-12 text-emerald-600 dark:text-emerald-400" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900">Kecepatan Penglihatan</h3>
-              <p className="text-gray-500 max-w-xs mx-auto mt-2">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Kecepatan Penglihatan</h3>
+              <p className="text-gray-500 dark:text-gray-400 max-w-xs mx-auto mt-2">
                 Tangkap ikon yang muncul secepat mungkin! Uji reaksi dan koordinasi mata Anda.
               </p>
             </div>
@@ -319,8 +319,8 @@ const ReactionGame = ({ onBack }: { onBack: () => void }) => {
 
         {gameState === 'playing' && (
           <div className="w-full h-full absolute inset-0 cursor-crosshair" onClick={() => setTimeLeft(prev => Math.max(0, prev - 1))}>
-            <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-4 py-1 rounded-full shadow-sm">
-              <span className="text-xs font-bold text-emerald-600">Mata Anda Harus Cepat!</span>
+            <div className="absolute top-4 left-4 bg-white/80 dark:bg-card/80 backdrop-blur-sm px-4 py-1 rounded-full shadow-sm">
+              <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Mata Anda Harus Cepat!</span>
             </div>
             <div className="absolute top-4 right-4">
               <Badge variant={timeLeft < 5 ? "destructive" : "secondary"} className="text-lg px-4 border-none shadow-md">
@@ -348,10 +348,10 @@ const ReactionGame = ({ onBack }: { onBack: () => void }) => {
         {gameState === 'over' && (
           <div className="text-center space-y-6 animate-in fade-in zoom-in duration-300 p-8">
             <Badge className="bg-emerald-600 hover:bg-emerald-700 text-white border-none py-1 px-4">Selesai!</Badge>
-            <h3 className="text-3xl font-black text-gray-900">Target Didapat:</h3>
-            <div className="text-7xl font-black text-emerald-600 py-4 drop-shadow-md">{score}</div>
-            <div className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100">
-              <p className="text-emerald-700 text-sm font-medium">Reaksi mata Anda luar biasa tajam!</p>
+            <h3 className="text-3xl font-black text-gray-900 dark:text-gray-100">Target Didapat:</h3>
+            <div className="text-7xl font-black text-emerald-600 dark:text-emerald-400 py-4 drop-shadow-md">{score}</div>
+            <div className="bg-emerald-50/50 dark:bg-emerald-500/10 p-4 rounded-xl border border-emerald-100 dark:border-emerald-500/20">
+              <p className="text-emerald-700 dark:text-emerald-400 text-sm font-medium">Reaksi mata Anda luar biasa tajam!</p>
             </div>
             <div className="pt-4 flex flex-col gap-3">
               <Button onClick={startGame} className="py-7 rounded-2xl bg-emerald-600 hover:bg-emerald-700 shadow-lg text-white">
@@ -388,33 +388,33 @@ export default function Information() {
 
         {/* Header Section */}
         <div className="text-center md:text-left animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 rounded-full border border-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 dark:bg-primary/10 rounded-full border border-primary/10 dark:border-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-4">
             Eye Health Hub
           </div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 flex items-center gap-3 justify-center md:justify-start">
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 flex items-center gap-3 justify-center md:justify-start">
             <Info className="w-10 h-10 text-primary" />
             Edukasi & Informasi
           </h1>
-          <p className="text-gray-500 mt-3 text-lg max-w-2xl leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 mt-3 text-lg max-w-2xl leading-relaxed">
             Pusat edukasi interaktif untuk menjaga kesehatan penglihatan Anda melalui alat screening mandiri dan simulasi AI.
           </p>
         </div>
 
         <Tabs defaultValue="screening" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-10 bg-gray-100/70 p-1.5 rounded-2xl h-auto">
-            <TabsTrigger value="screening" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:shadow-md transition-all">
+          <TabsList className="grid w-full grid-cols-4 mb-10 bg-gray-100/70 dark:bg-muted/50 p-1.5 rounded-2xl h-auto">
+            <TabsTrigger value="screening" className="rounded-xl py-3 data-[state=active]:bg-white dark:data-[state=active]:bg-card data-[state=active]:shadow-md transition-all">
               <Eye className="w-4 h-4 md:mr-2" />
               <span className="hidden md:inline">Katarak</span>
             </TabsTrigger>
-            <TabsTrigger value="tools" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:shadow-md transition-all">
+            <TabsTrigger value="tools" className="rounded-xl py-3 data-[state=active]:bg-white dark:data-[state=active]:bg-card data-[state=active]:shadow-md transition-all">
               <LayoutGrid className="w-4 h-4 md:mr-2" />
               <span className="hidden md:inline">Tes Mandiri</span>
             </TabsTrigger>
-            <TabsTrigger value="game" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:shadow-md transition-all active:ring-2 active:ring-primary/20">
+            <TabsTrigger value="game" className="rounded-xl py-3 data-[state=active]:bg-white dark:data-[state=active]:bg-card data-[state=active]:shadow-md transition-all active:ring-2 active:ring-primary/20">
               <Trophy className="w-4 h-4 md:mr-2" />
               <span className="hidden md:inline">Mini Games</span>
             </TabsTrigger>
-            <TabsTrigger value="wellness" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:shadow-md transition-all">
+            <TabsTrigger value="wellness" className="rounded-xl py-3 data-[state=active]:bg-white dark:data-[state=active]:bg-card data-[state=active]:shadow-md transition-all">
               <Apple className="w-4 h-4 md:mr-2" />
               <span className="hidden md:inline">Wellness</span>
             </TabsTrigger>
@@ -422,14 +422,14 @@ export default function Information() {
 
           {/* TAB 1: CATARACT & SIMULATION */}
           <TabsContent value="screening" className="space-y-8 animate-in zoom-in-95 duration-500">
-            <Card className="overflow-hidden border-none shadow-2xl bg-gradient-to-br from-white via-white to-primary/5">
+            <Card className="overflow-hidden border-none shadow-2xl bg-gradient-to-br from-white dark:from-card via-white dark:via-card to-primary/5 dark:to-primary/10">
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle className="text-2xl font-bold flex items-center gap-2">
+                    <CardTitle className="text-2xl font-bold flex items-center gap-2 dark:text-gray-100">
                       Simulasi Penglihatan
                     </CardTitle>
-                    <CardDescription className="text-base mt-1">
+                    <CardDescription className="text-base mt-1 dark:text-gray-400">
                       Visualisasi bagaimana katarak mengaburkan pandangan nyata.
                     </CardDescription>
                   </div>
@@ -440,7 +440,7 @@ export default function Information() {
               </CardHeader>
               <CardContent>
                 <div
-                  className="relative rounded-2xl overflow-hidden aspect-[16/9] group cursor-pointer shadow-inner border-4 border-white"
+                  className="relative rounded-2xl overflow-hidden aspect-[16/9] group cursor-pointer shadow-inner border-4 border-white dark:border-background"
                   onClick={() => setSimulationActive(!simulationActive)}
                 >
                   <img
@@ -460,7 +460,7 @@ export default function Information() {
             </Card>
 
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-none shadow-lg border-l-4 border-l-primary overflow-hidden hover:shadow-xl transition-shadow">
+              <Card className="border-none shadow-lg border-l-4 border-l-primary overflow-hidden hover:shadow-xl transition-shadow dark:bg-card">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl flex items-center gap-2 text-primary">
                     <Stethoscope className="w-5 h-5" />
@@ -470,19 +470,19 @@ export default function Information() {
                 <CardContent className="space-y-4 pt-4">
                   {cataractInfo.symptoms.map((sym, i) => (
                     <div key={i} className="flex gap-4 items-start group">
-                      <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary/20 transition-colors shrink-0">
+                      <div className="bg-primary/10 dark:bg-primary/20 p-2 rounded-xl group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-colors shrink-0">
                         <ChevronRight className="w-4 h-4 text-primary" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-1">{sym.title}</h4>
-                        <p className="text-sm text-gray-500 leading-relaxed">{sym.desc}</p>
+                        <h4 className="font-bold text-gray-900 dark:text-gray-100 mb-1">{sym.title}</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{sym.desc}</p>
                       </div>
                     </div>
                   ))}
                 </CardContent>
               </Card>
 
-              <Card className="border-none shadow-lg border-l-4 border-l-destructive overflow-hidden hover:shadow-xl transition-shadow">
+              <Card className="border-none shadow-lg border-l-4 border-l-destructive overflow-hidden hover:shadow-xl transition-shadow dark:bg-card">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-xl flex items-center gap-2 text-destructive">
                     <ShieldAlert className="w-5 h-5" />
@@ -491,11 +491,11 @@ export default function Information() {
                 </CardHeader>
                 <CardContent className="space-y-3 pt-4">
                   {cataractInfo.risks.map((risk, i) => (
-                    <div key={i} className="flex items-center gap-4 p-3.5 bg-red-50/50 rounded-2xl border border-red-100/50 hover:bg-red-50 transition-colors">
-                      <div className="text-destructive bg-white p-2.5 rounded-full shadow-sm">
+                    <div key={i} className="flex items-center gap-4 p-3.5 bg-red-50/50 dark:bg-destructive/10 rounded-2xl border border-red-100/50 dark:border-destructive/20 hover:bg-red-50 dark:hover:bg-destructive/20 transition-colors">
+                      <div className="text-destructive bg-white dark:bg-background p-2.5 rounded-full shadow-sm">
                         {risk.icon}
                       </div>
-                      <span className="font-bold text-gray-700">{risk.text}</span>
+                      <span className="font-bold text-gray-700 dark:text-gray-300">{risk.text}</span>
                     </div>
                   ))}
                 </CardContent>
@@ -505,8 +505,8 @@ export default function Information() {
 
           {/* TAB 2: SELF-TEST TOOLS */}
           <TabsContent value="tools" className="space-y-8 animate-in zoom-in-95 duration-500">
-            <Card className="border-none shadow-2xl bg-white overflow-hidden">
-              <CardHeader className="bg-gray-900 text-white p-8">
+            <Card className="border-none shadow-2xl bg-white dark:bg-card overflow-hidden">
+              <CardHeader className="bg-gray-900 border-b border-gray-800 text-white p-8">
                 <CardTitle className="flex items-center gap-2 text-2xl">
                   <LayoutGrid className="w-6 h-6 text-primary" />
                   Tes Kisi Amsler (Amsler Grid)
@@ -529,20 +529,20 @@ export default function Information() {
                   </div>
                 </div>
 
-                <div className="mt-10 max-w-lg text-center bg-gray-50 p-6 rounded-3xl border border-gray-100">
-                  <h4 className="font-black text-gray-900 text-xl mb-3">Panduan Penggunaan:</h4>
-                  <ul className="text-sm text-gray-600 space-y-2 mb-6">
+                <div className="mt-10 max-w-lg text-center bg-gray-50 dark:bg-muted p-6 rounded-3xl border border-gray-100 dark:border-border">
+                  <h4 className="font-black text-gray-900 dark:text-gray-100 text-xl mb-3">Panduan Penggunaan:</h4>
+                  <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-2 mb-6">
                     <li>1. Gunakan kacamata baca jika Anda memakainya.</li>
                     <li>2. Tutup mata kiri, fokuskan mata kanan ke **titik hitam tengah**.</li>
                     <li>3. Pastikan semua garis terlihat **lurus dan sejajar**.</li>
                     <li>4. Ulangi untuk mata kiri.</li>
                   </ul>
 
-                  <div className="bg-destructive/5 p-5 rounded-2xl border border-destructive/10 text-left">
+                  <div className="bg-destructive/5 dark:bg-destructive/10 p-5 rounded-2xl border border-destructive/10 text-left">
                     <p className="text-xs text-destructive font-bold uppercase tracking-widest mb-2 flex items-center gap-2">
                       <ShieldAlert className="w-4 h-4" /> Perhatian Medis:
                     </p>
-                    <p className="text-sm text-gray-700 leading-relaxed font-medium">
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
                       Jika ada garis yang tampak **bergelombang, miring, atau terdistorsi**, segera buat janji temu dengan dokter mata.
                     </p>
                   </div>
@@ -550,25 +550,25 @@ export default function Information() {
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-xl">
+            <Card className="border-none shadow-xl dark:bg-card">
               <CardHeader className="pb-2">
-                <CardTitle className="text-2xl flex items-center gap-2">
+                <CardTitle className="text-2xl flex items-center gap-2 dark:text-gray-100">
                   <Move className="w-6 h-6 text-primary" />
                   Senam Mata (Eye Health)
                 </CardTitle>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base dark:text-gray-400">
                   Kurangi mata lelah (digital eye strain) dengan latihan 3 menit.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid sm:grid-cols-3 gap-6 pt-4">
                   {eyeExercises.map((ex, i) => (
-                    <div key={i} className="p-6 rounded-3xl bg-gray-100 border border-gray-200/50 flex flex-col items-center text-center hover:bg-white hover:shadow-xl hover:border-primary/20 transition-all group">
-                      <div className="p-4 rounded-2xl bg-white shadow-md mb-4 group-hover:scale-110 transition-transform">
+                    <div key={i} className="p-6 rounded-3xl bg-gray-100 dark:bg-muted border border-gray-200/50 dark:border-border flex flex-col items-center text-center hover:bg-white dark:hover:bg-card hover:shadow-xl hover:border-primary/20 dark:hover:border-primary/20 transition-all group">
+                      <div className="p-4 rounded-2xl bg-white dark:bg-background shadow-md mb-4 group-hover:scale-110 transition-transform">
                         {ex.icon}
                       </div>
-                      <h5 className="font-black text-gray-900 mb-2">{ex.title}</h5>
-                      <p className="text-sm text-gray-500 leading-relaxed font-medium">{ex.desc}</p>
+                      <h5 className="font-black text-gray-900 dark:text-gray-100 mb-2">{ex.title}</h5>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-medium">{ex.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -621,21 +621,21 @@ export default function Information() {
           <TabsContent value="wellness" className="space-y-8 animate-in zoom-in-95 duration-500">
             <div className="grid md:grid-cols-2 gap-10">
               <div className="space-y-8">
-                <h3 className="text-3xl font-black text-gray-900 px-2 flex items-center gap-3">
+                <h3 className="text-3xl font-black text-gray-900 dark:text-gray-100 px-2 flex items-center gap-3">
                   <Apple className="w-8 h-8 text-green-500" />
                   Nutrisi Super
                 </h3>
                 <div className="grid grid-cols-1 gap-5">
                   {nutritionGuide.map((item, i) => (
-                    <Card key={i} className="border-none shadow-lg overflow-hidden group hover:shadow-2xl transition-all border border-gray-50">
+                    <Card key={i} className="border-none shadow-lg overflow-hidden group hover:shadow-2xl transition-all border border-gray-50 dark:border-border dark:bg-card">
                       <div className="flex">
-                        <div className="w-24 bg-gray-50 flex items-center justify-center text-5xl group-hover:bg-primary/5 transition-colors">
+                        <div className="w-24 bg-gray-50 dark:bg-muted/50 flex items-center justify-center text-5xl group-hover:bg-primary/5 dark:group-hover:bg-primary/10 transition-colors">
                           {item.icon}
                         </div>
                         <CardContent className="p-6">
-                          <h4 className="font-black text-gray-900 text-lg mb-1">{item.food}</h4>
+                          <h4 className="font-black text-gray-900 dark:text-gray-100 text-lg mb-1">{item.food}</h4>
                           <p className="text-xs text-primary font-black uppercase tracking-tighter mb-2">{item.nutrient}</p>
-                          <p className="text-sm text-gray-500 leading-tight font-medium">{item.benefit}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 leading-tight font-medium">{item.benefit}</p>
                         </CardContent>
                       </div>
                     </Card>
@@ -644,30 +644,30 @@ export default function Information() {
               </div>
 
               <div className="space-y-8">
-                <h3 className="text-3xl font-black text-gray-900 px-2 flex items-center gap-3">
+                <h3 className="text-3xl font-black text-gray-900 dark:text-gray-100 px-2 flex items-center gap-3">
                   <CheckCircle2 className="w-8 h-8 text-primary" />
                   Protokol Harian
                 </h3>
                 <div className="space-y-6">
-                  <Card className="bg-primary/5 border-primary/20 shadow-none p-8 rounded-[2rem] hover:bg-primary/10 transition-colors">
-                    <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm mb-4">
+                  <Card className="bg-primary/5 dark:bg-primary/10 border-primary/20 dark:border-primary/20 shadow-none p-8 rounded-[2rem] hover:bg-primary/10 transition-colors">
+                    <div className="bg-white dark:bg-card w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm mb-4">
                       <Zap className="w-6 h-6 text-primary" />
                     </div>
                     <h4 className="font-black text-primary text-xl mb-3 flex items-center gap-2">
                       Metode 20-20-20
                     </h4>
-                    <p className="text-base text-gray-700 leading-relaxed font-medium">
+                    <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
                       Setiap <strong>20 menit</strong> menatap layar, lihat objek berjarak <strong>20 kaki</strong> (6m) selama <strong>20 detik</strong>.
                     </p>
                   </Card>
-                  <Card className="bg-blue-50 shadow-none p-8 rounded-[2rem] border-blue-100 hover:bg-blue-100/50 transition-colors">
-                    <div className="bg-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm mb-4">
-                      <ShieldAlert className="w-6 h-6 text-blue-600" />
+                  <Card className="bg-blue-50 dark:bg-blue-900/10 shadow-none p-8 rounded-[2rem] border-blue-100 dark:border-blue-900/20 hover:bg-blue-100/50 dark:hover:bg-blue-900/20 transition-colors">
+                    <div className="bg-white dark:bg-card w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm mb-4">
+                      <ShieldAlert className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <h4 className="font-black text-blue-700 text-xl mb-3 flex items-center gap-2">
+                    <h4 className="font-black text-blue-700 dark:text-blue-400 text-xl mb-3 flex items-center gap-2">
                       Filter Sinar UV
                     </h4>
-                    <p className="text-base text-gray-700 leading-relaxed font-medium">
+                    <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
                       Paparan sinar matahari kronis adalah faktor risiko katarak. Gunakan kacamata hitam berkualitas saat di luar ruangan.
                     </p>
                   </Card>
@@ -678,18 +678,18 @@ export default function Information() {
         </Tabs>
 
         {/* FAQ Section */}
-        <section className="space-y-8 pt-16 border-t border-gray-100">
-          <h2 className="text-4xl font-black text-gray-900 flex items-center gap-4">
+        <section className="space-y-8 pt-16 border-t border-gray-100 dark:border-border">
+          <h2 className="text-4xl font-black text-gray-900 dark:text-gray-100 flex items-center gap-4">
             <LifeBuoy className="w-10 h-10 text-primary" />
             Pusat Bantuan
           </h2>
-          <Accordion type="single" collapsible className="w-full bg-white rounded-[2.5rem] shadow-2xl border-none p-4">
+          <Accordion type="single" collapsible className="w-full bg-white dark:bg-card rounded-[2.5rem] shadow-2xl border-none p-4">
             {faqs.map((faq, idx) => (
-              <AccordionItem key={idx} value={`item-${idx}`} className={idx === faqs.length - 1 ? "border-none" : "border-b border-gray-50"}>
-                <AccordionTrigger className="text-left font-black py-8 px-6 hover:no-underline text-gray-800 text-xl hover:text-primary transition-all">
+              <AccordionItem key={idx} value={`item-${idx}`} className={idx === faqs.length - 1 ? "border-none" : "border-b border-gray-50 dark:border-border"}>
+                <AccordionTrigger className="text-left font-black py-8 px-6 hover:no-underline text-gray-800 dark:text-gray-200 text-xl hover:text-primary transition-all">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-500 px-6 pb-8 leading-relaxed text-lg font-medium">
+                <AccordionContent className="text-gray-500 dark:text-gray-400 px-6 pb-8 leading-relaxed text-lg font-medium">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

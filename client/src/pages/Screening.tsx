@@ -43,14 +43,14 @@ export default function Screening() {
       <Layout showNav={false}>
         <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-8 text-center px-4">
           <div className="relative">
-            <div className="w-24 h-24 rounded-full border-4 border-gray-100 flex items-center justify-center">
+            <div className="w-24 h-24 rounded-full border-4 border-gray-100 dark:border-border flex items-center justify-center bg-white dark:bg-card">
               <Eye className="w-10 h-10 text-primary animate-pulse" />
             </div>
             <div className="absolute inset-0 rounded-full border-t-4 border-primary animate-spin"></div>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Menganalisis Gambar Mata</h2>
-            <p className="text-gray-500 mt-2 max-w-xs mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Menganalisis Gambar Mata</h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-2 max-w-xs mx-auto">
               Model AI sedang memeriksa gambar untuk mendeteksi tanda-tanda katarak. Proses ini biasanya memerlukan 5-15 detik.
             </p>
           </div>
@@ -63,35 +63,35 @@ export default function Screening() {
     <Layout>
       <div className="space-y-6">
         <div className="text-center md:text-left">
-          <h1 className="text-2xl font-bold text-gray-900">Screening Katarak</h1>
-          <p className="text-gray-500 text-sm">Ambil atau upload foto mata yang jelas untuk screening katarak.</p>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">Screening Katarak</h1>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">Ambil atau upload foto mata yang jelas untuk screening katarak.</p>
         </div>
 
         {!mode && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
             <button
               onClick={() => setMode("camera")}
-              className="group p-8 bg-white border-2 border-dashed border-gray-200 rounded-3xl hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-4 min-h-[200px]"
+              className="group p-8 bg-white dark:bg-card border-2 border-dashed border-gray-200 dark:border-border rounded-3xl hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 transition-all flex flex-col items-center justify-center gap-4 min-h-[200px]"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Camera className="w-8 h-8 text-primary" />
               </div>
               <div className="text-center">
-                <h3 className="font-bold text-gray-900">Gunakan Kamera</h3>
-                <p className="text-sm text-gray-500">Ambil foto sekarang</p>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100">Gunakan Kamera</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Ambil foto sekarang</p>
               </div>
             </button>
 
             <button
               onClick={() => setMode("upload")}
-              className="group p-8 bg-white border-2 border-dashed border-gray-200 rounded-3xl hover:border-secondary hover:bg-secondary/5 transition-all flex flex-col items-center justify-center gap-4 min-h-[200px]"
+              className="group p-8 bg-white dark:bg-card border-2 border-dashed border-gray-200 dark:border-border rounded-3xl hover:border-secondary hover:bg-secondary/5 dark:hover:bg-secondary/10 transition-all flex flex-col items-center justify-center gap-4 min-h-[200px]"
             >
-              <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 bg-secondary/10 dark:bg-secondary/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Upload className="w-8 h-8 text-secondary" />
               </div>
               <div className="text-center">
-                <h3 className="font-bold text-gray-900">Upload Gambar</h3>
-                <p className="text-sm text-gray-500">Pilih dari galeri</p>
+                <h3 className="font-bold text-gray-900 dark:text-gray-100">Upload Gambar</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Pilih dari galeri</p>
               </div>
             </button>
           </div>
@@ -116,15 +116,15 @@ export default function Screening() {
                 </button>
               </>
             ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 p-8 text-center">
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50 dark:bg-card p-8 text-center">
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full h-full border-2 border-dashed border-gray-300 rounded-2xl flex flex-col items-center justify-center gap-4 cursor-pointer hover:bg-gray-100 transition-colors"
+                  className="w-full h-full border-2 border-dashed border-gray-300 dark:border-border rounded-2xl flex flex-col items-center justify-center gap-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-muted/50 transition-colors"
                 >
-                  <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center">
-                    <ImageIcon className="w-8 h-8 text-gray-400" />
+                  <div className="w-16 h-16 bg-white dark:bg-muted/50 rounded-full shadow-sm flex items-center justify-center">
+                    <ImageIcon className="w-8 h-8 text-gray-400 dark:text-gray-600" />
                   </div>
-                  <p className="text-gray-500 font-medium">Klik untuk memilih gambar</p>
+                  <p className="text-gray-500 dark:text-gray-400 font-medium">Klik untuk memilih gambar</p>
                 </div>
                 <input
                   type="file"
@@ -147,7 +147,7 @@ export default function Screening() {
 
         {image && (
           <div className="max-w-xl mx-auto space-y-6">
-            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 dark:border-border">
               <img src={image} alt="Preview" className="w-full h-auto" />
               <button
                 onClick={() => setImage(null)}

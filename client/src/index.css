@@ -27,11 +27,47 @@
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
   --ring: 199 89% 48%;
   
   --radius: 1rem;
+}
+
+.dark {
+  --background: 222 47% 8%;
+  --foreground: 210 40% 92%;
+  
+  --primary: 199 89% 48%;
+  --primary-foreground: 210 40% 98%;
+  
+  --secondary: 174 96% 39%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 217 33% 15%;
+  --muted-foreground: 215 20% 60%;
+  
+  --accent: 217 33% 18%;
+  --accent-foreground: 210 40% 92%;
+  
+  --destructive: 0 63% 50%;
+  --destructive-foreground: 210 40% 98%;
+
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 92%;
+
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 92%;
+
+  --border: 217 33% 20%;
+  --input: 217 33% 20%;
+  --ring: 199 89% 48%;
 }
 
 @layer base {
@@ -50,7 +86,7 @@
 
 @layer utilities {
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl;
   }
   
   .text-balance {

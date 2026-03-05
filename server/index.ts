@@ -74,7 +74,7 @@ export async function setupApp() {
   if (process.env.NODE_ENV === "production" && !process.env.VERCEL) {
     serveStatic(app);
   } else if (process.env.NODE_ENV !== "production") {
-    const { setupVite } = await import("./vite");
+    const { setupVite } = await import("./vite.js");
     await setupVite(httpServer, app);
   }
 }
