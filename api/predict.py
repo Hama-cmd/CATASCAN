@@ -7,9 +7,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 try:
-    import tflite_runtime.interpreter as tflite
+    import ai_edge_litert.interpreter as tflite
 except ImportError:
-    import tensorflow.lite as tflite
+    try:
+        import tflite_runtime.interpreter as tflite
+    except ImportError:
+        import tensorflow.lite as tflite
 
 app = Flask(__name__)
 CORS(app)
